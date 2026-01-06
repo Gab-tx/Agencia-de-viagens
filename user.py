@@ -8,21 +8,26 @@ class User:
         self.password = password
         self.created_at = created_at
 
-        self.viagens = {find_all_user_viagens(self.id)}
+        self.viagens = []
 
 
     def comprar_viagem(self, viagem_desejada):
-        # if ...
+        ...
+    
+    def cancelar_viagem(self,usuario,viagem_desejada):
+        user = find_user_by_username(usuario)
+        viagem = find_viagem_by_destination(viagem_desejada)
 
-        # self.viagens.append(viagem_desejada)
-        ...
+        delete_user_viagem(user, viagem)
     
-    def cancelar_viagem():
-        ...
+    def tickets_viagem(self):
+        return find_all_user_viagens(self.id)
     
-    def tickets_viagem(self) -> list:
-        return self.viagens
-    
-    def login(self):
-        ...
+    def login(self,username,password):
+        user = find_user_by_username(username)
+
+        if user.password != password:
+            return False
+        
+        return True
         

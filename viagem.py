@@ -2,13 +2,11 @@ from app.database.repositories import *
 
 class Viagem:
     def __init__(self,id_viagem,destino,preco,horario,data_inicio, data_fim):
-        self.id_viagem = id_viagem
+        self.id = id_viagem
         self.destino = destino
-        self.preco = preco
-        self.horario = horario
-        self.data = f"{data_inicio} - {data_fim}"
-
-
+        self._preco = preco
+        self._horario = horario
+        self._data = f"{data_inicio} - {data_fim}"
 
     @property
     def data(self):
@@ -36,10 +34,10 @@ class Viagem:
 
     @property
     def preco(self):
-        return self.preco
+        return self._preco
     @preco.setter
     def preco(self,novo_preco):
-        self.preco = novo_preco
+        self._preco = novo_preco
 
         update_viagem_preco(novo_preco,self.id_viagem)
 
